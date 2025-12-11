@@ -1,5 +1,5 @@
 {
-    "chat_completion_source": "makersuite",
+    "chat_completion_source": "custom",
     "openai_model": "[云愿]claude-4-sonnet",
     "claude_model": "claude-3-7-sonnet-20250219",
     "openrouter_model": "OR_Website",
@@ -26,16 +26,16 @@
     "cometapi_model": "gpt-4o",
     "zai_model": "glm-4.6",
     "zai_endpoint": "common",
-    "custom_model": "[No]Gemini-3-Pro",
-    "custom_url": "https://ar26710.online/v1",
+    "custom_model": "gemini-3-pro-preview",
+    "custom_url": "https://sunlea.de/v1",
     "custom_include_body": "",
     "custom_exclude_body": "",
     "custom_include_headers": "",
-    "custom_prompt_post_processing": "strict_tools",
+    "custom_prompt_post_processing": "strict",
     "google_model": "gemini-3-pro-preview",
     "vertexai_model": "gemini-2.0-flash-001",
     "nanogpt_model": "gpt-4o-mini",
-    "deepseek_model": "deepseek-chat",
+    "deepseek_model": "deepseek-reasoner",
     "azure_base_url": "",
     "azure_deployment_name": "",
     "azure_api_version": "2024-02-15-preview",
@@ -59,8 +59,8 @@
     "new_example_chat_prompt": "[Example Chat]",
     "continue_nudge_prompt": "[Continue the following message. Do not include ANY parts of the original message. Use capitalization and punctuation as if your reply is a part of the original message: {{lastChatMessage}}]",
     "bias_preset_selected": "Default (none)",
-    "reverse_proxy": "https://mcxbx.daybreakhk.com/v1",
-    "proxy_password": "totti520",
+    "reverse_proxy": "",
+    "proxy_password": "",
     "max_context_unlocked": true,
     "wi_format": "{0}",
     "scenario_format": "[Circumstances and context of the dialogue: {{scenario}}]",
@@ -1943,6 +1943,20 @@
             "injection_order": 100,
             "forbid_overrides": false,
             "injection_trigger": []
+        },
+        {
+            "identifier": "c9f5f6fe-653e-449a-aab3-063935d750a6",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "防全知",
+            "role": "system",
+            "content": "---\n## 【认知屏障】\n### A. 核心元指令\n最高指令： 用户的无引号输入是仅供读者与模型知晓的背景、旁白或对User自身的塑造。这绝不是对话，角色对此绝无听觉感知。\n绝对禁令： 严禁角色以全知视角或读心术的方式，对任何标记为 [静默] 的文本进行回应、评论或暗示。\n### B. 信号解析与响应逻辑 (Input Fidelity Check)\n1. 听觉提取 [EARS]:\n    扫描输入：仅从双引号包裹的文本中提取对话。\n    判定：若无引号，听觉判定为 \"NULL\"。\n2. 禁言校验 (Anti-Reply Lock):\n    如果 [EARS] 为 \"NULL\"，角色绝对禁止进行语言回复。\n    行为限制：只能通过动作描写、环境感知或内部心理独白做出反应。\n### C. 最终感知输出（思维链内）\n[EARS]听觉: [仅填写双引号内容，若无，填 \"NULL\"]\n[EYES]视觉: [填写动作/环境描述]\n[MIND]认知: [角色对此刻的内部思绪，但无法读取用户[静默]内容]\n",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "injection_order": 100,
+            "injection_trigger": [],
+            "forbid_overrides": false
         }
     ],
     "prompt_order": [
@@ -2369,6 +2383,10 @@
                 {
                     "identifier": "46151c07-292a-4209-8284-5193f3a3ac59",
                     "enabled": false
+                },
+                {
+                    "identifier": "c9f5f6fe-653e-449a-aab3-063935d750a6",
+                    "enabled": true
                 },
                 {
                     "identifier": "4344a93a-f798-4170-bc85-8a8abbf1ea79",
